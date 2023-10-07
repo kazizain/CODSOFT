@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calculator</title>
+
+
+
+    <style>
+        button {
+            font-size: 24px;
+            width: 70px;
+            height: 40px;
+            margin: 5px;
+            border-radius: 10px;
+
+        }
+    </style>
+
+
+
+
+
+
+</head>
+
+<body>
+
+    <!-----------------------------------------CDN--------------------------------------->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+
+    <!----------------------------------------------Task4------------------------------------------->
+
+    <div class="container"
+        style="background-color: darkgoldenrod; width: 450px; margin-left: auto;margin-right: auto; display: flex;justify-content: center;align-items: center; padding-top: 20px;padding-bottom: 20px;">
+
+        <form action="">
+            <di class="row ">
+                <div class="col-12" style="display: flex;justify-content: center;">
+                    <h3>Calculator</h3>
+                </div>
+            </di>
+
+            <div class="row">
+                <div class="col-12">
+                    <input type="text" id="result" placeholder="res = 0000000" readonly
+                        style="height: 70px; width: 350px;">
+                </div>
+            </div>
+
+            <div class="row mt-3">
+                <div class="col-3">
+                    <button type="button" onclick="append('7')">7</button>
+                </div>
+
+                <div class="col-3">
+                    <button type="button" onclick="append('8')">8</button>
+                </div>
+
+                <div class="col-3">
+                    <button type="button" onclick="append('9')">9</button>
+                </div>
+
+                <div class="col-3">
+                    <button type="button" onclick="operate('+')">+</button>
+                </div>
+            </div>
+
+
+
+
+
+
+
+            <div class="row mt-3">
+                <div class="col-3">
+                    <button type="button" onclick="append('4')">4</button>
+                </div>
+
+                <div class="col-3">
+                    <button type="button" onclick="append('5')">5</button>
+                </div>
+
+                <div class="col-3">
+                    <button type="button" onclick="append('6')">6</button>
+                </div>
+
+                <div class="col-3">
+                    <button type="button" onclick="operate('-')">-</button>
+                </div>
+            </div>
+
+
+
+
+            <div class="row mt-3">
+                <div class="col-3">
+                    <button type="button" onclick="append('1')">1</button>
+                </div>
+
+                <div class="col-3">
+                    <button type="button" onclick="append('2')">2</button>
+                </div>
+
+                <div class="col-3">
+                    <button type="button" onclick="append('3')">3</button>
+                </div>
+
+                <div class="col-3">
+                    <button type="button" onclick="operate('*')">*</button>
+                </div>
+            </div>
+
+
+
+
+            <div class="row mt-3">
+                <div class="col-3">
+                    <button type="button" onclick="append('0')">0</button>
+                </div>
+
+                <div class="col-3">
+                    <button type="button" onclick="operate('%')">%</button>
+                </div>
+
+                <div class="col-3">
+                    <button type="button" onclick="append('.')">.</button>
+                </div>
+
+                <div class="col-3">
+                    <button type="button" onclick="operate('/')">/</button>
+                </div>
+            </div>
+
+
+
+            <div class="row mt-3">
+                <div class="col-6">
+                    <button type="button" onclick="calculate()" style="width: 160px;">=</button>
+                </div>
+
+                <div class="col-3">
+                    <button type="button" onclick="clear()" style="width: 160px;">c</button>
+                </div>
+
+            </div>
+
+
+
+
+
+
+
+            <script>
+                let current = "";
+                let operator = "";
+                let result = 0;
+
+                function append(value) {
+                    current += value;
+                    document.getElementById("result").value = current;
+                }
+
+                function operate(value) {
+                    operator = value;
+                    result = parseInt(current);
+                    current = "";
+                }
+
+                function calculate() {
+                    let second = parseInt(current);
+                    switch (operator) {
+                        case "+":
+                            result += second;
+                            break;
+                        case "-":
+                            result -= second;
+                            break;
+                        case "*":
+                            result *= second;
+                            break;
+                        case "/":
+                            result /= second;
+                            break;
+                        case "%":
+                            result %= second;
+                            break;
+
+                    }
+                    document.getElementById("result").value = result;
+                    current = "";
+                }
+
+                function clear() {
+                    current = "";
+                    operator = "";
+                    result = 0;
+                    document.getElementById("result").value = "";
+                }
+            </script>
+
+
+
+
+
+
+
+        </form>
+    </div>
+
+
+
+</body>
+
+</html>
